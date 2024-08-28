@@ -1,7 +1,7 @@
 'use client'
-import { ThumbsDown, ThumbsUp } from 'lucide-react'
-import React from 'react'
 
+import { ThumbsDown, ThumbsUp } from 'lucide-react'
+import React, { FC, memo } from 'react'
 
 interface MessageListProps {
     messages: Array<{
@@ -12,7 +12,7 @@ interface MessageListProps {
     isDarkMode: boolean
 }
 
-export const MessagesList: React.FC<MessageListProps> = React.memo(({ messages, isDarkMode }) => (
+const MessagesList: FC<MessageListProps> = ({ messages, isDarkMode }) => (
     <div className="flex-grow overflow-hidden p-4">
         <div className="h-full overflow-y-auto pr-4">
             {messages.map((message, index) => (
@@ -43,4 +43,10 @@ export const MessagesList: React.FC<MessageListProps> = React.memo(({ messages, 
             ))}
         </div>
     </div>
-))
+);
+
+// Añadir displayName manualmente al componente memorizado
+export const MemoizedMessagesList = memo(MessagesList);
+MemoizedMessagesList.displayName = 'MessagesList';
+
+export default MemoizedMessagesList;

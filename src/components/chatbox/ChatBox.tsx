@@ -2,7 +2,7 @@
 import React, { useState, useCallback } from 'react'
 import { MessageCircle, X, Send, Smile } from 'lucide-react'
 import { useTranslation } from 'react-i18next'
-import { ChatHeader, ChatInput, EmojiPicker, MessagesList, TypingIndicator } from '@/components'
+import { ChatHeader, ChatInput, MemoizedEmojiPicker as EmojiPicker, MemoizedMessagesList as MessagesList, TypingIndicator } from '@/components'
 import { useChat } from '@/hooks'
 
 

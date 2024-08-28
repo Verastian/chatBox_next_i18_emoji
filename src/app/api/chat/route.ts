@@ -1,4 +1,3 @@
-'use server'
 import { NextResponse } from 'next/server';
 import { processMessage } from '../../../lib/nlp';
 
