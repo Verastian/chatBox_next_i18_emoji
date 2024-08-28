@@ -1,8 +1,8 @@
 import natural from 'natural';
+const { PorterStemmerEs, BayesClassifier, WordTokenizer } = natural;
 
-const tokenizer = new natural.WordTokenizer();
-const classifier = new natural.BayesClassifier();
-
+const tokenizer = new WordTokenizer();
+const classifier = new BayesClassifier(PorterStemmerEs);
 const intents = [
     {
         name: 'saludo',

@@ -11,7 +11,7 @@ const EmojiPicker: FC<EmojiPickerProps> = ({ onEmojiSelect }) => (
 )
 
 export const MemoizedEmojiPicker = memo(EmojiPicker);
-MemoizedEmojiPicker.displayName = "EmojiPicker";
+MemoizedEmojiPicker.displayName = 'EmojiPicker';
 
 export default MemoizedEmojiPicker;
 

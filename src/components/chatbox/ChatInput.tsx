@@ -1,7 +1,6 @@
 'use client'
 import { Send, Smile } from 'lucide-react'
 import React from 'react'
-import { useTranslation } from 'react-i18next'
 
 interface ChatInputProps {
     inputMessage: string
@@ -20,7 +19,6 @@ export const ChatInput: React.FC<ChatInputProps> = ({
     showEmojiPicker,
     setShowEmojiPicker
 }) => {
-    const { t } = useTranslation()
     return (
         <div className={`p-4 ${isDarkMode ? 'bg-gray-700' : 'bg-gray-100'}`}>
             <form onSubmit={(e) => { e.preventDefault(); handleSendMessage(); }} className="flex w-full space-x-2">
@@ -29,7 +27,7 @@ export const ChatInput: React.FC<ChatInputProps> = ({
                         ? 'bg-gray-800 text-white border-gray-600'
                         : 'bg-white text-gray-800 border-gray-300'
                         }`}
-                    placeholder={t('typePlaceholder')}
+                    placeholder={'typePlaceholder'}
                     value={inputMessage}
                     onChange={(e) => setInputMessage(e.target.value)}
                 />
