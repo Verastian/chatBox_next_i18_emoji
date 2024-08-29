@@ -1,13 +1,9 @@
 'use client'
+import { ChatInputProps } from '@/interface'
 import { useChatStore } from '@/store'
 import { Send, Smile } from 'lucide-react'
 import React from 'react'
 
-interface ChatInputProps {
-    isDarkMode: boolean
-    showEmojiPicker: boolean
-    setShowEmojiPicker: (show: boolean) => void
-}
 
 export const ChatInput: React.FC<ChatInputProps> = ({
     isDarkMode,

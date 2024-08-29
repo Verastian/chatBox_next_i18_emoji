@@ -1,16 +1,8 @@
 'use client'
 
+import { MessageListProps } from '@/interface';
 import { ThumbsDown, ThumbsUp } from 'lucide-react'
 import React, { FC, memo } from 'react'
-
-interface MessageListProps {
-    messages: Array<{
-        role: 'user' | 'assistant'
-        content: string
-        rating?: 'helpful' | 'not helpful'
-    }>
-    isDarkMode: boolean
-}
 
 const MessagesList: FC<MessageListProps> = ({ messages, isDarkMode }) => (
     <div className="flex-grow overflow-hidden p-4">

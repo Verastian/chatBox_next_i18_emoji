@@ -1,10 +1,6 @@
 'use client'
+import { ChatHeaderProps } from '@/interface'
 import React from 'react'
-
-interface ChatHeaderProps {
-    isDarkMode: boolean
-    toggleLanguage?: () => void
-}
 
 export const ChatHeader: React.FC<ChatHeaderProps> = ({ isDarkMode, toggleLanguage }) => {
     return (

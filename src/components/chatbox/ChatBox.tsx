@@ -3,11 +3,7 @@ import React, { useState } from 'react'
 import { MessageCircle, X } from 'lucide-react'
 import { ChatHeader, ChatInput, MemoizedEmojiPicker as EmojiPicker, MemoizedMessagesList as MessagesList, TypingIndicator } from '@/components'
 import { useChatStore } from '@/store'
-
-
-interface Props {
-  isDarkMode: boolean
-}
+import { Props } from '@/interface'
 
 export const ChatBox: React.FC<Props> = ({ isDarkMode }) => {
   const [isOpen, setIsOpen] = useState(false)
@@ -38,9 +34,6 @@ export const ChatBox: React.FC<Props> = ({ isDarkMode }) => {
           <MessagesList messages={messages} isDarkMode={isDarkMode} />
           {isTyping && <TypingIndicator isDarkMode={isDarkMode} />}
           <ChatInput
-            // inputMessage={inputMessage}
-            // setInputMessage={setInputMessage}
-            // handleSendMessage={handleSendMessage}
             isDarkMode={isDarkMode}
             showEmojiPicker={showEmojiPicker}
             setShowEmojiPicker={setShowEmojiPicker}

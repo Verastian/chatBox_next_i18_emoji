@@ -1,10 +1,6 @@
+import { Message } from '@/interface'
 import { create } from 'zustand'
 
-interface Message {
-    role: 'user' | 'assistant'
-    content: string
-    rating?: 'helpful' | 'not helpful'
-}
 
 interface ChatState {
     messages: Message[]

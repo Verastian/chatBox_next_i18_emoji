@@ -1,31 +1,11 @@
 import natural from 'natural';
 const { PorterStemmerEs, BayesClassifier, WordTokenizer } = natural;
+import intentsData from '../data/intents.json';
 
 const tokenizer = new WordTokenizer();
 let classifier = new BayesClassifier(PorterStemmerEs);
 
-const intents = [
-    {
-        name: 'saludo',
-        examples: ['Hola', 'Buenos días', 'Buenas tardes', 'Qué tal'],
-        response: '¡Hola! ¿En qué puedo ayudarte hoy?'
-    },
-    {
-        name: 'despedida',
-        examples: ['Adiós', 'Hasta luego', 'Chao', 'Nos vemos'],
-        response: 'Gracias por tu visita. ¡Hasta pronto!'
-    },
-    {
-        name: 'problema',
-        examples: ['Tengo un problema', 'No funciona', 'Hay un error', 'Algo está mal'],
-        response: 'Lamento escuchar que tienes un problema. ¿Puedes darme más detalles para poder ayudarte mejor?'
-    },
-    {
-        name: 'ayuda',
-        examples: ['Necesito ayuda', 'Cómo puedo', 'Me puedes ayudar', 'Tengo una duda'],
-        response: 'Estoy aquí para ayudarte. Por favor, dime más sobre lo que necesitas.'
-    },
-];
+const intents = intentsData.intents;
 
 let isInitialized = false;
 
