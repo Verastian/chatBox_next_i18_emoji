@@ -8,6 +8,7 @@ let classifier = new BayesClassifier(PorterStemmerEs);
 const intents = intentsData.intents;
 
 let isInitialized = false;
+let conversationContext = '';
 
 export function initializeNLP() {
     if (isInitialized) {
@@ -45,12 +46,26 @@ export function processMessage(message: string): string {
         const matchedIntent = intents.find(i => i.name === intent);
 
         if (matchedIntent) {
-            return matchedIntent.response;
+            let response = matchedIntent.response;
+
+            // Aplicar lógica basada en el contexto
+            if (intent === 'servicios' && conversationContext === 'presupuesto') {
+                response += " Teniendo en cuenta tu interés en el presupuesto, ¿hay algún servicio específico de desarrollo web sobre el que te gustaría obtener una cotización?";
+            } else if (intent === 'presupuesto' && conversationContext === 'servicios') {
+                response += " Basándonos en los servicios de desarrollo web que mencionaste, podemos preparar un presupuesto personalizado. ¿Te gustaría que te contacte un asesor para discutir los detalles?";
+            } else if (intent === 'tecnologias' && (conversationContext === 'servicios' || conversationContext === 'presupuesto')) {
+                response += " Estas tecnologías nos permiten ofrecer soluciones de desarrollo web robustas y escalables. ¿Tienes algún requerimiento técnico específico para tu proyecto?";
+            }
+
+            // Actualizar el contexto de la conversación
+            conversationContext = intent;
+
+            return response;
         } else {
-            return "Lo siento, no entendí eso. ¿Puedes reformular tu pregunta?";
+            return "Lo siento, no entendí eso. ¿Podrías reformular tu pregunta sobre nuestros servicios de desarrollo web?";
         }
     } catch (error) {
         console.error('Error classifying message:', error);
-        return "Lo siento, hubo un error al procesar tu mensaje. Por favor, inténtalo de nuevo.";
+        return "Lo siento, hubo un error al procesar tu mensaje. Por favor, inténtalo de nuevo o pregunta sobre nuestros servicios de desarrollo web de otra manera.";
     }
 }

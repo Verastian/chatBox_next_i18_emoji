@@ -6,18 +6,21 @@ interface ChatState {
     messages: Message[]
     inputMessage: string
     isTyping: boolean
+    isInitialized: boolean
     setMessages: (messages: Message[]) => void
     setInputMessage: (inputMessage: string) => void
     setIsTyping: (isTyping: boolean) => void
     addMessage: (message: Message) => void
     handleSendMessage: () => Promise<void>
     rateMessage: (messageIndex: number, rating: 'helpful' | 'not helpful') => void
+    initializeChat: () => void
 }
 
 export const useChatStore = create<ChatState>((set, get) => ({
     messages: [],
     inputMessage: '',
     isTyping: false,
+    isInitialized: false,
     setMessages: (messages) => set({ messages }),
     setInputMessage: (inputMessage) => set({ inputMessage }),
     setIsTyping: (isTyping) => set({ isTyping }),
@@ -55,4 +58,18 @@ export const useChatStore = create<ChatState>((set, get) => ({
             index === messageIndex ? { ...msg, rating } : msg
         )
     })),
+
+
+    initializeChat: () => {
+        const { isInitialized, addMessage } = get()
+        if (!isInitialized) {
+            const welcomeMessage: Message = {
+                role: 'assistant',
+                content: '¡Hola! Bienvenido, mi nombre es Verastian, soy desarrollador web . ¿En qué puedo ayudarte hoy?'
+            }
+            addMessage(welcomeMessage)
+            set({ isInitialized: true })
+        }
+    },
+
 }))

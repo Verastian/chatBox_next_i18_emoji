@@ -1,5 +1,5 @@
 'use client'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { MessageCircle, X } from 'lucide-react'
 import { ChatHeader, ChatInput, MemoizedEmojiPicker as EmojiPicker, MemoizedMessagesList as MessagesList, TypingIndicator } from '@/components'
 import { useChatStore } from '@/store'
@@ -8,7 +8,14 @@ import { Props } from '@/interface'
 export const ChatBox: React.FC<Props> = ({ isDarkMode }) => {
   const [isOpen, setIsOpen] = useState(false)
   const [showEmojiPicker, setShowEmojiPicker] = useState(false)
-  const { messages, inputMessage, setInputMessage, isTyping, handleSendMessage } = useChatStore()
+  const { messages, inputMessage, setInputMessage, isTyping, handleSendMessage, initializeChat } = useChatStore()
+
+
+  useEffect(() => {
+    if (isOpen) {
+      initializeChat()
+    }
+  }, [isOpen, initializeChat])
 
   return (
     <div className="fixed bottom-4 right-4">

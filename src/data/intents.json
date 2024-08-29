@@ -3,22 +3,32 @@
       {
         "name": "saludo",
         "examples": ["Hola", "Buenos días", "Buenas tardes", "Qué tal"],
-        "response": "¡Hola! ¿En qué puedo ayudarte hoy?"
+        "response": "¡Hola! ¿En qué puedo ayudarte hoy con respecto a nuestros servicios de desarrollo web?"
       },
       {
         "name": "despedida",
         "examples": ["Adiós", "Hasta luego", "Chao", "Nos vemos"],
-        "response": "Gracias por tu visita. ¡Hasta pronto!"
+        "response": "Gracias por contactarnos. Si tienes más preguntas sobre desarrollo web, no dudes en volver. ¡Que tengas un excelente día!"
       },
       {
-        "name": "problema",
-        "examples": ["Tengo un problema", "No funciona", "Hay un error", "Algo está mal"],
-        "response": "Lamento escuchar que tienes un problema. ¿Puedes darme más detalles para poder ayudarte mejor?"
+        "name": "servicios",
+        "examples": ["Qué servicios ofrecen", "Qué hacen", "Cuáles son sus servicios"],
+        "response": "Ofrecemos una amplia gama de servicios de desarrollo web, incluyendo diseño de sitios web, desarrollo de aplicaciones web, optimización SEO y mantenimiento de sitios. ¿Hay algún servicio específico que te interese?"
       },
       {
-        "name": "ayuda",
-        "examples": ["Necesito ayuda", "Cómo puedo", "Me puedes ayudar", "Tengo una duda"],
-        "response": "Estoy aquí para ayudarte. Por favor, dime más sobre lo que necesitas."
+        "name": "presupuesto",
+        "examples": ["Cuánto cuesta", "Precio", "Presupuesto", "Cotización"],
+        "response": "Los precios de nuestros servicios de desarrollo web varían según las necesidades específicas de cada proyecto. ¿Podrías darme más detalles sobre lo que estás buscando? Así podré proporcionarte una estimación más precisa."
+      },
+      {
+        "name": "portfolio",
+        "examples": ["Trabajos anteriores", "Ejemplos", "Portfolio", "Proyectos realizados"],
+        "response": "Tenemos un amplio portfolio de proyectos de desarrollo web exitosos. ¿Te interesa ver ejemplos de algún tipo específico de sitio web o aplicación?"
+      },
+      {
+        "name": "tecnologias",
+        "examples": ["Qué tecnologías usan", "Con qué trabajan", "Herramientas"],
+        "response": "Trabajamos con una variedad de tecnologías modernas de desarrollo web, incluyendo React, Next.js, Node.js, y bases de datos SQL y NoSQL. ¿Tienes alguna preferencia o requisito tecnológico específico para tu proyecto?"
       }
     ]
   }
