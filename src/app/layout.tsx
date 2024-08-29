@@ -1,9 +1,7 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
-import { initializeNLP } from '../lib/nlp';
 
-initializeNLP();
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {

@@ -1,8 +1,8 @@
 'use client'
-import React, { useState, useCallback } from 'react'
-import { MessageCircle, X, Send, Smile } from 'lucide-react'
+import React, { useState } from 'react'
+import { MessageCircle, X } from 'lucide-react'
 import { ChatHeader, ChatInput, MemoizedEmojiPicker as EmojiPicker, MemoizedMessagesList as MessagesList, TypingIndicator } from '@/components'
-import { useChat } from '@/hooks'
+import { useChatStore } from '@/store'
 
 
 interface Props {
@@ -12,8 +12,7 @@ interface Props {
 export const ChatBox: React.FC<Props> = ({ isDarkMode }) => {
   const [isOpen, setIsOpen] = useState(false)
   const [showEmojiPicker, setShowEmojiPicker] = useState(false)
-  const { messages, inputMessage, setInputMessage, isTyping, handleSendMessage } = useChat()
-
+  const { messages, inputMessage, setInputMessage, isTyping, handleSendMessage } = useChatStore()
 
   return (
     <div className="fixed bottom-4 right-4">
@@ -39,9 +38,9 @@ export const ChatBox: React.FC<Props> = ({ isDarkMode }) => {
           <MessagesList messages={messages} isDarkMode={isDarkMode} />
           {isTyping && <TypingIndicator isDarkMode={isDarkMode} />}
           <ChatInput
-            inputMessage={inputMessage}
-            setInputMessage={setInputMessage}
-            handleSendMessage={handleSendMessage}
+            // inputMessage={inputMessage}
+            // setInputMessage={setInputMessage}
+            // handleSendMessage={handleSendMessage}
             isDarkMode={isDarkMode}
             showEmojiPicker={showEmojiPicker}
             setShowEmojiPicker={setShowEmojiPicker}
@@ -50,7 +49,7 @@ export const ChatBox: React.FC<Props> = ({ isDarkMode }) => {
             <div className="absolute bottom-16 right-0">
               <EmojiPicker
                 onEmojiSelect={(emoji) => {
-                  setInputMessage((prev: any) => prev + emoji.native)
+                  setInputMessage(inputMessage + emoji.native)
                   setShowEmojiPicker(false)
                 }}
               />

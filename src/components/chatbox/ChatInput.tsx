@@ -1,24 +1,20 @@
 'use client'
+import { useChatStore } from '@/store'
 import { Send, Smile } from 'lucide-react'
 import React from 'react'
 
 interface ChatInputProps {
-    inputMessage: string
-    setInputMessage: (message: string) => void
-    handleSendMessage: () => void
     isDarkMode: boolean
     showEmojiPicker: boolean
     setShowEmojiPicker: (show: boolean) => void
 }
 
 export const ChatInput: React.FC<ChatInputProps> = ({
-    inputMessage,
-    setInputMessage,
-    handleSendMessage,
     isDarkMode,
     showEmojiPicker,
     setShowEmojiPicker
 }) => {
+    const { inputMessage, setInputMessage, handleSendMessage } = useChatStore()
     return (
         <div className={`p-4 ${isDarkMode ? 'bg-gray-700' : 'bg-gray-100'}`}>
             <form onSubmit={(e) => { e.preventDefault(); handleSendMessage(); }} className="flex w-full space-x-2">
