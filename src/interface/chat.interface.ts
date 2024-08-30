@@ -5,10 +5,17 @@ export interface Props {
 //tipo literal 
 export type MessageRating = 'helpful' | 'not helpful';
 
+export interface ContentItem {
+    type?: string;
+    content: string;
+    url?: string;
+    number?: string;
+    alt?: string;
+}
 
 export interface Message {
-    role: 'user' | 'assistant';
-    content: string;
+    role?: 'user' | 'assistant';
+    content: ContentItem | ContentItem[];
     rating?: MessageRating;
 }
 

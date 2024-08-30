@@ -1,9 +1,12 @@
 {
     "intents": [
-      {
+    {
         "name": "saludo",
         "examples": ["Hola", "Buenos días", "Buenas tardes", "Qué tal"],
-        "response": "¡Hola! ¿En qué puedo ayudarte hoy con respecto a nuestros servicios de desarrollo web?"
+        "response": [
+          { "type": "text", "content": "¡Hola! ¿En qué puedo ayudarte hoy con respecto a nuestros servicios de desarrollo web?" },
+          { "type": "icon", "content": "wave" }
+        ]
       },
       {
         "name": "despedida",
@@ -23,12 +26,26 @@
       {
         "name": "portfolio",
         "examples": ["Trabajos anteriores", "Ejemplos", "Portfolio", "Proyectos realizados"],
-        "response": "Tenemos un amplio portfolio de proyectos de desarrollo web exitosos. ¿Te interesa ver ejemplos de algún tipo específico de sitio web o aplicación?"
+        "response": [
+          { "type": "text", "content": "Aquí tienes un ejemplo de uno de mis trabajo reciente:" },
+          { "type": "image", "content": "portfolio/project_1.png", "alt": "Captura de pantalla de un proyecto web reciente" },
+          { "type": "link", "content": "Visita el sitio web del proyecto", "url": "https://www.geofenix.cl" }
+        ]
       },
       {
         "name": "tecnologias",
         "examples": ["Qué tecnologías usan", "Con qué trabajan", "Herramientas"],
         "response": "Trabajamos con una variedad de tecnologías modernas de desarrollo web, incluyendo React, Next.js, Node.js, y bases de datos SQL y NoSQL. ¿Tienes alguna preferencia o requisito tecnológico específico para tu proyecto?"
+      },
+      {
+        "name": "contacto",
+        "examples": ["Cómo puedo contactarlos", "Número de teléfono", "Correo electrónico"],
+        "response": [
+          { "type": "text", "content": "Puedes contactarme de las siguientes formas:" },
+          { "type": "link", "content": "Visita mi sitio web", "url": "https://www.verastian.website" },
+          { "type": "phone", "content": "Llámanos al +1234567890" },
+          { "type": "whatsapp", "content": "Chatea conmigo en WhatsApp", "number": "+1234567890" }
+        ]
       }
     ]
   }

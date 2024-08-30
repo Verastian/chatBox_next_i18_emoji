@@ -8,7 +8,7 @@ import { Props } from '@/interface'
 export const ChatBox: React.FC<Props> = ({ isDarkMode }) => {
   const [isOpen, setIsOpen] = useState(false)
   const [showEmojiPicker, setShowEmojiPicker] = useState(false)
-  const { messages, inputMessage, setInputMessage, isTyping, handleSendMessage, initializeChat } = useChatStore()
+  const { messages, inputMessage, setInputMessage, isTyping, initializeChat } = useChatStore()
 
 
   useEffect(() => {

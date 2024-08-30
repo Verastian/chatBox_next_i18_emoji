@@ -3,6 +3,7 @@
 import { MessageListProps } from '@/interface';
 import { ThumbsDown, ThumbsUp } from 'lucide-react'
 import React, { FC, memo } from 'react'
+import { MessageContent } from './MessageContent';
 
 const MessagesList: FC<MessageListProps> = ({ messages, isDarkMode }) => (
     <div className="flex-grow overflow-hidden p-4">
@@ -13,7 +14,7 @@ const MessagesList: FC<MessageListProps> = ({ messages, isDarkMode }) => (
                         ? (isDarkMode ? 'bg-blue-600 text-white' : 'bg-blue-500 text-white')
                         : (isDarkMode ? 'bg-gray-700 text-white' : 'bg-gray-100 text-gray-800')
                         }`}>
-                        {message.content}
+                        <MessageContent content={message.content} />
                     </div>
                     {message.role === 'assistant' && (
                         <div className="flex mt-1 justify-start">

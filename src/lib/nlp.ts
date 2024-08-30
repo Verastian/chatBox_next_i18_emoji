@@ -29,7 +29,7 @@ export function initializeNLP() {
     console.log('NLP initialized and trained.');
 }
 
-export function processMessage(message: string): string {
+export function processMessage(message: string): any {
     if (!isInitialized) {
         console.log('NLP not initialized. Initializing now...');
         initializeNLP();
@@ -50,11 +50,23 @@ export function processMessage(message: string): string {
 
             // Aplicar lógica basada en el contexto
             if (intent === 'servicios' && conversationContext === 'presupuesto') {
-                response += " Teniendo en cuenta tu interés en el presupuesto, ¿hay algún servicio específico de desarrollo web sobre el que te gustaría obtener una cotización?";
+                if (Array.isArray(response)) {
+                    response = [...response, { type: 'text', content: "Teniendo en cuenta tu interés en el presupuesto, ¿hay algún servicio específico de desarrollo web sobre el que te gustaría obtener una cotización?" }];
+                } else {
+                    response = [{ type: 'text', content: response }, { type: 'text', content: "Teniendo en cuenta tu interés en el presupuesto, ¿hay algún servicio específico de desarrollo web sobre el que te gustaría obtener una cotización?" }];
+                }
             } else if (intent === 'presupuesto' && conversationContext === 'servicios') {
-                response += " Basándonos en los servicios de desarrollo web que mencionaste, podemos preparar un presupuesto personalizado. ¿Te gustaría que te contacte un asesor para discutir los detalles?";
+                if (Array.isArray(response)) {
+                    response = [...response, { type: 'text', content: "Basándonos en los servicios de desarrollo web que mencionaste, podemos preparar un presupuesto personalizado. ¿Te gustaría que te contacte un asesor para discutir los detalles?" }];
+                } else {
+                    response = [{ type: 'text', content: response }, { type: 'text', content: "Basándonos en los servicios de desarrollo web que mencionaste, podemos preparar un presupuesto personalizado. ¿Te gustaría que te contacte un asesor para discutir los detalles?" }];
+                }
             } else if (intent === 'tecnologias' && (conversationContext === 'servicios' || conversationContext === 'presupuesto')) {
-                response += " Estas tecnologías nos permiten ofrecer soluciones de desarrollo web robustas y escalables. ¿Tienes algún requerimiento técnico específico para tu proyecto?";
+                if (Array.isArray(response)) {
+                    response = [...response, { type: 'text', content: "Estas tecnologías nos permiten ofrecer soluciones de desarrollo web robustas y escalables. ¿Tienes algún requerimiento técnico específico para tu proyecto?" }];
+                } else {
+                    response = [{ type: 'text', content: response }, { type: 'text', content: "Estas tecnologías nos permiten ofrecer soluciones de desarrollo web robustas y escalables. ¿Tienes algún requerimiento técnico específico para tu proyecto?" }];
+                }
             }
 
             // Actualizar el contexto de la conversación
@@ -62,10 +74,10 @@ export function processMessage(message: string): string {
 
             return response;
         } else {
-            return "Lo siento, no entendí eso. ¿Podrías reformular tu pregunta sobre nuestros servicios de desarrollo web?";
+            return [{ type: 'text', content: "Lo siento, no entendí eso. ¿Podrías reformular tu pregunta sobre nuestros servicios de desarrollo web?" }];
         }
     } catch (error) {
         console.error('Error classifying message:', error);
-        return "Lo siento, hubo un error al procesar tu mensaje. Por favor, inténtalo de nuevo o pregunta sobre nuestros servicios de desarrollo web de otra manera.";
+        return [{ type: 'text', content: "Lo siento, hubo un error al procesar tu mensaje. Por favor, inténtalo de nuevo o pregunta sobre nuestros servicios de desarrollo web de otra manera." }];
     }
 }

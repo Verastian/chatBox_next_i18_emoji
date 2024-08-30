@@ -1,6 +1,5 @@
-import { Message } from '@/interface'
+import { Message, ContentItem } from '@/interface'
 import { create } from 'zustand'
-
 
 interface ChatState {
     messages: Message[]
@@ -28,7 +27,7 @@ export const useChatStore = create<ChatState>((set, get) => ({
     handleSendMessage: async () => {
         const { inputMessage, addMessage, setInputMessage, setIsTyping } = get()
         if (inputMessage.trim() !== '') {
-            const newUserMessage: Message = { role: 'user', content: inputMessage }
+            const newUserMessage: Message = { role: 'user', content: [{ type: 'text', content: inputMessage }] }
             addMessage(newUserMessage)
             setInputMessage('')
             setIsTyping(true)
@@ -46,7 +45,10 @@ export const useChatStore = create<ChatState>((set, get) => ({
                 addMessage(newAssistantMessage)
             } catch (error) {
                 console.error('Error:', error)
-                const errorMessage: Message = { role: 'assistant', content: 'Lo siento, hubo un error al procesar tu mensaje.' }
+                const errorMessage: Message = {
+                    role: 'assistant',
+                    content: [{ type: 'text', content: 'Lo siento, hubo un error al procesar tu mensaje.' }]
+                }
                 addMessage(errorMessage)
             } finally {
                 setIsTyping(false)
@@ -59,17 +61,18 @@ export const useChatStore = create<ChatState>((set, get) => ({
         )
     })),
 
-
     initializeChat: () => {
         const { isInitialized, addMessage } = get()
         if (!isInitialized) {
             const welcomeMessage: Message = {
                 role: 'assistant',
-                content: '¡Hola! Bienvenido, mi nombre es Verastian, soy desarrollador web . ¿En qué puedo ayudarte hoy?'
+                content: [
+                    { type: 'text', content: '¡Hola! Bienvenido, mi nombre es Verastian, soy desarrollador web . ¿En qué puedo ayudarte hoy?' },
+                    { type: 'icon', content: 'wave' }
+                ]
             }
             addMessage(welcomeMessage)
             set({ isInitialized: true })
         }
     },
-
-}))
+}));
