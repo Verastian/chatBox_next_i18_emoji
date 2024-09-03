@@ -31,3 +31,25 @@ body {
     text-wrap: balance;
   }
 }
+@layer utilities {
+  .custom-scrollbar::-webkit-scrollbar {
+    @apply w-2; /* Equivalente a width: 8px */
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-track {
+    @apply bg-gray-700 rounded-lg; /* Background color and rounded corners */
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    @apply text-gray-800 rounded-lg; /* Thumb color and rounded corners */
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    @apply bg-gray-700; /* Darker on hover */
+  }
+
+  .custom-scrollbar {
+    scrollbar-width: thin; /* Firefox */
+    scrollbar-color: #1f2937 #374151; /* Thumb color and track color for Firefox */
+  }
+}

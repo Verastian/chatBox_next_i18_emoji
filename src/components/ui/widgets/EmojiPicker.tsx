@@ -6,8 +6,14 @@ interface EmojiPickerProps {
     onEmojiSelect: (emoji: any) => void
 }
 
+// console.log('EMOJIS: ', data)
 const EmojiPicker: FC<EmojiPickerProps> = ({ onEmojiSelect }) => (
-    <Picker data={data} onEmojiSelect={onEmojiSelect} />
+    <Picker
+        data={data}
+        onEmojiSelect={onEmojiSelect}
+        categories={['people']}
+        locale={'es'}
+    />
 )
 
 export const MemoizedEmojiPicker = memo(EmojiPicker);

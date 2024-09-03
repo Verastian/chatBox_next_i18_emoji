@@ -1,29 +1,40 @@
 {
     "intents": [
-    {
+    {  
+        "id":"1",
         "name": "saludo",
         "examples": ["Hola", "Buenos días", "Buenas tardes", "Qué tal"],
         "response": [
           { "type": "text", "content": "¡Hola! ¿En qué puedo ayudarte hoy con respecto a nuestros servicios de desarrollo web?" },
-          { "type": "icon", "content": "wave" }
+          { "type": "emoji", "content": "😀" }
         ]
       },
       {
+        "id":"2",
         "name": "despedida",
         "examples": ["Adiós", "Hasta luego", "Chao", "Nos vemos"],
-        "response": "Gracias por contactarnos. Si tienes más preguntas sobre desarrollo web, no dudes en volver. ¡Que tengas un excelente día!"
+        "response": [
+          { "type": "text", "content": "Gracias por contactarnos. Si tienes más preguntas sobre desarrollo web, no dudes en volver. ¡Que tengas un excelente día!" }
+        ]
       },
       {
+        "id":"3",
         "name": "servicios",
         "examples": ["Qué servicios ofrecen", "Qué hacen", "Cuáles son sus servicios"],
-        "response": "Ofrecemos una amplia gama de servicios de desarrollo web, incluyendo diseño de sitios web, desarrollo de aplicaciones web, optimización SEO y mantenimiento de sitios. ¿Hay algún servicio específico que te interese?"
+        "response": [
+          { "type": "text", "content": "Ofrecemos una amplia gama de servicios de desarrollo web, incluyendo diseño de sitios web, desarrollo de aplicaciones web, optimización SEO y mantenimiento de sitios. ¿Hay algún servicio específico que te interese?" }
+        ]
       },
       {
+        "id":"4",
         "name": "presupuesto",
         "examples": ["Cuánto cuesta", "Precio", "Presupuesto", "Cotización"],
-        "response": "Los precios de nuestros servicios de desarrollo web varían según las necesidades específicas de cada proyecto. ¿Podrías darme más detalles sobre lo que estás buscando? Así podré proporcionarte una estimación más precisa."
+        "response": [
+          { "type": "text", "content": "Los precios de nuestros servicios de desarrollo web varían según las necesidades específicas de cada proyecto. ¿Podrías darme más detalles sobre lo que estás buscando? Así podré proporcionarte una estimación más precisa." }
+        ]
       },
       {
+        "id":"5",
         "name": "portfolio",
         "examples": ["Trabajos anteriores", "Ejemplos", "Portfolio", "Proyectos realizados"],
         "response": [
@@ -33,11 +44,15 @@
         ]
       },
       {
+        "id":"6",
         "name": "tecnologias",
         "examples": ["Qué tecnologías usan", "Con qué trabajan", "Herramientas"],
-        "response": "Trabajamos con una variedad de tecnologías modernas de desarrollo web, incluyendo React, Next.js, Node.js, y bases de datos SQL y NoSQL. ¿Tienes alguna preferencia o requisito tecnológico específico para tu proyecto?"
+        "response": [
+          { "type": "text", "content": "Trabajamos con una variedad de tecnologías modernas de desarrollo web, incluyendo React, Next.js, Node.js, y bases de datos SQL y NoSQL. ¿Tienes alguna preferencia o requisito tecnológico específico para tu proyecto?" }
+        ]
       },
       {
+        "id":"7",
         "name": "contacto",
         "examples": ["Cómo puedo contactarlos", "Número de teléfono", "Correo electrónico"],
         "response": [

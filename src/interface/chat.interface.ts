@@ -14,6 +14,7 @@ export interface ContentItem {
 }
 
 export interface Message {
+    id?: string;
     role?: 'user' | 'assistant';
     content: ContentItem | ContentItem[];
     rating?: MessageRating;
@@ -39,4 +40,7 @@ export interface ChatHeaderProps {
     toggleLanguage?: () => void
 }
 
-
+export interface Rating {
+    messageId: string  // Cambiado de messageIndex a messageId
+    value: 'helpful' | 'not helpful'
+}

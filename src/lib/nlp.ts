@@ -44,9 +44,9 @@ export function processMessage(message: string): any {
         console.log('Classified intent:', intent);
 
         const matchedIntent = intents.find(i => i.name === intent);
-
         if (matchedIntent) {
-            let response = matchedIntent.response;
+            // let response = matchedIntent.response;
+            let { response, id } = matchedIntent
 
             // Aplicar lógica basada en el contexto
             if (intent === 'servicios' && conversationContext === 'presupuesto') {
@@ -71,8 +71,7 @@ export function processMessage(message: string): any {
 
             // Actualizar el contexto de la conversación
             conversationContext = intent;
-
-            return response;
+            return { response, id };
         } else {
             return [{ type: 'text', content: "Lo siento, no entendí eso. ¿Podrías reformular tu pregunta sobre nuestros servicios de desarrollo web?" }];
         }
