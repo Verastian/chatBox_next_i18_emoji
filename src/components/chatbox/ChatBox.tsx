@@ -4,8 +4,9 @@ import { MessageCircle, X } from 'lucide-react'
 import { ChatHeader, ChatInput, MemoizedEmojiPicker as EmojiPicker, MemoizedMessagesList as MessagesList, TypingIndicator } from '@/components'
 import { useChatStore } from '@/store'
 import { Props } from '@/interface'
-import Lottie from 'react-lottie-player'
+const Lottie = dynamic(() => import('react-lottie-player'), { ssr: false });
 import chat2 from "../../../public/img/lottie/lottieflow-chat22-dark.json";
+import dynamic from 'next/dynamic'
 
 export const ChatBox: React.FC<Props> = ({ isDarkMode }) => {
   const [isOpen, setIsOpen] = useState(false)
@@ -31,14 +32,10 @@ export const ChatBox: React.FC<Props> = ({ isDarkMode }) => {
         aria-haspopup="dialog"
       >
         {isOpen ? <X className="w-6 h-6" /> :
-          // <MessageCircle className="w-6 h-6" />
           <Lottie
             loop={true}
             play={!isOpen}
             animationData={chat2}
-            // onLoopComplete={handleEndAnimated}
-            // onClick={scrollToTop}
-            // segments={[1, 300]}
             style={lottieStyles}
             speed={1}
           />

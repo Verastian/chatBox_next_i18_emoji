@@ -5,24 +5,33 @@ import { ThumbsDown, ThumbsUp } from 'lucide-react'
 import { MessageListProps, Message, Rating } from '@/interface'
 import { MessageContent } from './MessageContent'
 import { useChatStore } from '@/store'
+import { hasVerticalScrollBar } from '@/utils'
 
 
 
 const MessagesList: FC<MessageListProps> = ({ messages, isDarkMode }) => {
     const messagesEndRef = useRef<HTMLDivElement>(null)
-    // const [ratings, setRatings] = useState<Rating[]>([])
     const { ratings, handleRating } = useChatStore()
+    const containerRef = useRef<HTMLDivElement>(null);
+    const [hasScrollBar, setHasScrollBar] = useState(false);
 
     const scrollToBottom = () => {
         messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' })
     }
 
     useEffect(() => {
-        scrollToBottom()
+        if (typeof window !== 'undefined') {
+            const container = containerRef.current;
+            scrollToBottom()
+            if (container) {
+                setHasScrollBar(hasVerticalScrollBar(container));
+            }
+        }
     }, [messages])
+
     return (
-        <div className="flex-grow overflow-hidden p-4">
-            <div className="h-full overflow-y-auto pr-4 custom-scrollbar">
+        <div className={`flex-grow overflow-hidden ${hasScrollBar ? 'py-4 pl-4' : 'p-4'}`}>
+            <div className="h-full overflow-y-auto pr-4 custom-scrollbar" ref={containerRef}>
                 {messages.map((message: Message, index) => {
                     return (
                         <div
